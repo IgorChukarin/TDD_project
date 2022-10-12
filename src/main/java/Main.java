@@ -7,7 +7,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
 
         while (gameIsOn) {
-            ticTacToe.displayTable();
+            System.out.println(ticTacToe.displayTable());
             String input = in.nextLine();
 
             if (!inputIsCorrect(input)) {
@@ -18,7 +18,8 @@ public class Main {
             ticTacToe.add(input);
             gameIsOn = ticTacToe.checkWinner();
             if (gameIsOn == false) {
-                ticTacToe.displayTable();
+                System.out.println("GAME OVER");
+                System.out.println(ticTacToe.displayTable());
             }
         }
     }

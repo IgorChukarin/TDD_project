@@ -17,16 +17,17 @@ public class TicTacToe {
 
         if (arrayTable[x][y] == "_") {
             arrayTable[x][y] = letterNumberSymbol.substring(2);
+        } else {
+            System.out.println("Эта клетка уже занята!");
         }
     }
 
-    public void displayTable() {
-        System.out.println(
+    public String displayTable() {
+        return
                 "   1   2   3\n" +
                 "A _" + arrayTable[0][0] + "_|_" + arrayTable[0][1] + "_|_" + arrayTable[0][2] + "_\n" +
                 "B _" + arrayTable[1][0] + "_|_" + arrayTable[1][1] + "_|_" + arrayTable[1][2] + "_\n" +
-                "C _" + arrayTable[2][0] + "_|_" + arrayTable[2][1] + "_|_" + arrayTable[2][2] + "_\n"
-        );
+                "C _" + arrayTable[2][0] + "_|_" + arrayTable[2][1] + "_|_" + arrayTable[2][2] + "_\n";
     }
 
     public boolean checkWinner() {
@@ -54,8 +55,22 @@ public class TicTacToe {
                 sym3.equals("O") && sym6.equals(sym1) && sym9.equals(sym1) ||
 
                 sym1.equals("O") && sym5.equals(sym1) && sym9.equals(sym1) ||
-                sym3.equals("O") && sym5.equals(sym1) && sym7.equals(sym1)
-        ) {
+                sym3.equals("O") && sym5.equals(sym1) && sym7.equals(sym1))
+        {
+            gameIsOn = false;
+        }
+        else if (
+                sym1.equals("X") && sym2.equals(sym1) && sym3.equals(sym1) ||
+                sym4.equals("X") && sym5.equals(sym1) && sym6.equals(sym1) ||
+                sym7.equals("X") && sym8.equals(sym1) && sym9.equals(sym1) ||
+
+                sym1.equals("X") && sym4.equals(sym1) && sym7.equals(sym1) ||
+                sym2.equals("X") && sym5.equals(sym1) && sym8.equals(sym1) ||
+                sym3.equals("X") && sym6.equals(sym1) && sym9.equals(sym1) ||
+
+                sym1.equals("X") && sym5.equals(sym1) && sym9.equals(sym1) ||
+                sym3.equals("X") && sym5.equals(sym1) && sym7.equals(sym1))
+        {
             gameIsOn = false;
         }
         return gameIsOn;

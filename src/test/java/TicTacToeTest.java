@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +20,14 @@ public class TicTacToeTest {
     @Test
     @DisplayName("Нарисовать X")
     public void testAddX() {
-        ticTacToe.add("A2X");
-        String actual = ticTacToe.arrayTable[0][1];
+        ticTacToe.add("B2X");
+        String actual = ticTacToe.arrayTable[1][1];
         String expected = "X";
+        assertEquals(expected, actual);
+
+        ticTacToe.add("C3X");
+        actual = ticTacToe.arrayTable[2][2];
+        expected = "X";
         assertEquals(expected, actual);
     }
 
@@ -32,6 +39,27 @@ public class TicTacToeTest {
         String actual = ticTacToe.arrayTable[0][0];
         String expected = "O";
         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Вывод игрового поля в консоль")
+    public void testDisplayTable() {
+        String actual = ticTacToe.displayTable();
+        String expected = "   1   2   3\n" +
+                "A ___|___|___\n" +
+                "B ___|___|___\n" +
+                "C ___|___|___\n";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Проверка победных ситуаций")
+    public void testCheckWinner() {
+        ticTacToe.add("A1O");
+        ticTacToe.add("A2O");
+        ticTacToe.add("A3O");
+        boolean actual = ticTacToe.checkWinner();
+        assertFalse(actual);
     }
 
     @Override
