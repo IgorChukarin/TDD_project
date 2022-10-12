@@ -2,9 +2,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Тестирование методов класса игры")
 public class TicTacToeTest {
     TicTacToe ticTacToe = new TicTacToe();
-
 
     @Test
     @DisplayName("Нарисовать O")
